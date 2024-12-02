@@ -2,7 +2,7 @@
 require_once '../config/database.php';
 require_once '../interfaces/boletoInterface.php';
 
-class boletoRepository implements IBoleto
+class boletoboletoRepository implements IBoleto
 {
     private $conn;
 
@@ -20,7 +20,7 @@ class boletoRepository implements IBoleto
 require_once '../config/database.php';
 require_once '../interfaces/boletoInterface.php';
 
-class Repository implements IBoleto {
+class boletoRepository implements IBoleto {
     private $conexion;
 
     // Constructor para inicializar la conexión a la base de datos
@@ -87,7 +87,7 @@ class Repository implements IBoleto {
     }
 }
 /*
-class boletoRepository implements IBoleto {
+class boletoboletoRepository implements IBoleto {
     private $conn;
 
     public function __construct() {
