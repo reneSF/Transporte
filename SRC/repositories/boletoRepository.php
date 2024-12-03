@@ -168,5 +168,73 @@ class boletoboletoRepository implements IBoleto {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }*/
+require_once '../repositories/boletoRepository.php'; // Cambia la ruta según tu estructura
+
+class BoletoController {
+    private $boletoRepository;
+
+    // Constructor para inicializar el repositorio
+    public function __construct() {
+        // Cambia los valores de conexión según tu configuración
+        $host = 'localhost';
+        $dbname = 'tu_base_de_datos';
+        $username = 'tu_usuario';
+        $password = 'tu_contraseña';
+
+        $this->boletoRepository = new boletoRepository($host, $dbname, $username, $password);
+    }
+
+    // Método para crear un boleto
+    public function crearBoleto($data) {
+        // Validar que los datos necesarios están presentes
+        if (!isset($data['origen'], $data['nombre_vendedor'], $data['numero_serie'], $data['terminal_id'], $data['precio'])) {
+            return false; // Datos incompletos
+        }
+
+        // Crear un objeto boleto con los datos recibidos
+        $boleto = new stdClass();
+        $boleto->origen = $data['origen'];
+        $boleto->nombre_vendedor = $data['nombre_vendedor'];
+        $boleto->numero_serie = $data['numero_serie'];
+        $boleto->terminal_id = $data['terminal_id'];
+        $boleto->precio = $data['precio'];
+
+        // Llamar al repositorio para crear el boleto
+        return $this->boletoRepository->crearBoleto($boleto);
+    }
+
+    // Método para actualizar un boleto
+    public function actualizarBoleto($id, $data) {
+        $boleto = $this->boletoRepository->obtenerBoletoPorID($id);
+        if (!$boleto) {
+            return false; // Boleto no encontrado
+        }
+
+        // Actualizar los campos con los nuevos datos
+        $boleto->origen = $data['origen'] ?? $boleto->origen;
+        $boleto->nombre_vendedor = $data['nombre_vendedor'] ?? $boleto->nombre_vendedor;
+        $boleto->numero_serie = $data['numero_serie'] ?? $boleto->numero_serie;
+        $boleto->terminal_id = $data['terminal_id'] ?? $boleto->terminal_id;
+        $boleto->precio = $data['precio'] ?? $boleto->precio;
+
+        return $this->boletoRepository->actualizarBoleto($boleto);
+    }
+
+    // Método para borrar un boleto
+    public function borrarBoleto($id) {
+        return $this->boletoRepository->borrarBoleto($id);
+    }
+
+    // Método para obtener todos los boletos
+    public function obtenerBoletos() {
+        return $this->boletoRepository->obtenerBoleto();
+    }
+
+    // Método para obtener un boleto por ID
+    public function obtenerBoletoPorID($id) {
+        return $this->boletoRepository->obtenerBoletoPorID($id);
+    }
+}
 ?>
+
 
