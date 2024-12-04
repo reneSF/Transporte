@@ -114,7 +114,7 @@ formCrearBoleto.addEventListener("submit", async (event) => {
 
   try {
     // Realizando la solicitud al backend
-    const response = await fetch(`${API_URL}/boletos`, {
+    const response = await fetch(apiurl + '/boletos', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
