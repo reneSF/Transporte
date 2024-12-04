@@ -80,7 +80,7 @@ cargarBoletosBtn.addEventListener("click", async () => {
 */
 
 // Verifica que el servidor backend esté funcionando y configurado correctamente
-const API_URL = "http://localhost/Transportes/Transporte/public"; // Cambia esto según sea necesario
+const API_URL = "http://localhost:8888"; // Cambia esto según sea necesario
 
 // Referencias a elementos del DOM
 const formCrearBoleto = document.getElementById("form-crear-boleto");
@@ -114,7 +114,7 @@ formCrearBoleto.addEventListener("submit", async (event) => {
 
   try {
     // Realizando la solicitud al backend
-    const response = await fetch(apiurl + '/boletos', {
+    const response = await fetch(API_URL + '/boletos', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

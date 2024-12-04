@@ -1,9 +1,12 @@
 /* General */
+
+
 body {
     font-family: "Arial", sans-serif;
     background-color: #f8f9fa;
     color: #212529;
   }
+
   
   /* Encabezados */
   h1, h2 {
@@ -51,3 +54,9 @@ body {
     background-color: #ddd;
   }
   
+  body {
+    background-image: url(image.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

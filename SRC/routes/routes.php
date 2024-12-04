@@ -110,7 +110,7 @@ $app->get('/boletos', function ($request, $response) use ($boletoController) {
 
     // Verificar si la respuesta fue exitosa
     if ($boletos) {
-        $response->getBody()->write(json_encode($boletos));
+        $response->getBody()->write(json_encode(value: $boletos));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     } else {
         $response->getBody()->write(json_encode(['error' => 'No se encontraron boletos']));
