@@ -33,6 +33,17 @@ formulario.addEventListener('submit', async (e) => {
     obtenerPersonal();
 });
 
+// Resalta el enlace activo en el menú
+document.querySelectorAll('.navbar a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+
+// Opcional: Clase CSS para el botón activo
+/* .active { font-weight: bold; border-bottom: 2px solid white; } */
+
+
 // Función para obtener el listado de personal
 async function obtenerPersonal() {
     try {

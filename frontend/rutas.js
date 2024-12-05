@@ -1,9 +1,20 @@
-const API_URL = 'http://localhost:8000/api/rutas'; // Ajusta según tu configuración
+const API_URL = 'http://localhost:8888/api/rutas'; // Ajusta según tu configuración
 
 // Obtener todas las rutas al cargar la página
 document.addEventListener('DOMContentLoaded', obtenerRutas);
 
 const formulario = document.getElementById('ruta-form');
+
+// Resalta el enlace activo en el menú
+document.querySelectorAll('.navbar a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+
+// Opcional: Clase CSS para el botón activo
+/* .active { font-weight: bold; border-bottom: 2px solid white; } */
+
 
 // Guardar ruta (crear o actualizar)
 formulario.addEventListener('submit', async (e) => {
