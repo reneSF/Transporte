@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost/api/vehiculos'; // Cambiar según configuración
+const API_URL = 'http://localhost/api/vehiculos'; 
 
 // Obtener todos los vehículos al cargar la página
 document.addEventListener('DOMContentLoaded', obtenerVehiculos);
