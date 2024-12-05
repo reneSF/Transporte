@@ -91,6 +91,17 @@ const boletosLista = document.getElementById("boletos-lista");
 formCrearBoleto.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+// Resalta el enlace activo en el menú
+document.querySelectorAll('.navbar a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+
+// Opcional: Clase CSS para el botón activo
+/* .active { font-weight: bold; border-bottom: 2px solid white; } */
+
+
   // Recopilando datos del formulario
   const boletoData = {
     origen: document.getElementById("origen").value.trim(),
